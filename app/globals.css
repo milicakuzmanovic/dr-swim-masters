@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
 /* =========================================================
-   ROOT
+   VARIABLES
 ========================================================= */
 
 :root {
   --navy: #061225;
-  --navy2: #091a34;
-  --navy3: #041022;
+  --navy-dark: #041022;
+  --navy-mid: #091a34;
 
   --blue: #2eb7f4;
-  --blue2: #55b9ff;
+  --blue-light: #55b9ff;
 
   --white: #f7f9fc;
   --pure-white: #ffffff;
 
-  --text-dark: #061225;
+  --dark-text: #061225;
   --muted: #aebdce;
 
   --line: rgba(255, 255, 255, 0.13);
@@ -54,6 +54,8 @@ body {
 
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+
+  overflow-x: hidden;
 }
 
 a {
@@ -72,10 +74,10 @@ img {
 
 /* =========================================================
    HEADER
-   LIGHT / WHITE VERSION
 ========================================================= */
 
 .site-header {
+  width: 100%;
   height: 90px;
 
   padding: 0 5.5vw;
@@ -84,15 +86,17 @@ img {
   align-items: center;
   justify-content: space-between;
 
-  gap: 32px;
+  gap: 30px;
 
   background: #ffffff;
-  color: var(--text-dark);
+  color: var(--dark-text);
 
   border-bottom: 1px solid var(--dark-line);
 
   position: relative;
-  z-index: 100;
+  z-index: 1000;
+
+  overflow: hidden;
 }
 
 /* =========================================================
@@ -118,6 +122,8 @@ img {
 
 .brand img {
   width: 255px;
+  max-width: none;
+
   height: auto;
 
   display: block;
@@ -131,10 +137,10 @@ img {
 }
 
 /* =========================================================
-   NAVIGATION
+   DESKTOP NAV
 ========================================================= */
 
-nav {
+.desktop-nav {
   display: flex;
   align-items: center;
 
@@ -143,10 +149,10 @@ nav {
   margin-left: auto;
 }
 
-nav a {
+.desktop-nav a {
   position: relative;
 
-  color: var(--text-dark);
+  color: var(--dark-text);
 
   font-size: 13px;
   font-weight: 800;
@@ -156,11 +162,10 @@ nav a {
   white-space: nowrap;
 
   transition:
-    color 0.2s ease,
-    opacity 0.2s ease;
+    color 0.2s ease;
 }
 
-nav a::after {
+.desktop-nav a::after {
   content: "";
 
   position: absolute;
@@ -176,11 +181,11 @@ nav a::after {
   transition: width 0.2s ease;
 }
 
-nav a:hover {
+.desktop-nav a:hover {
   color: var(--blue);
 }
 
-nav a:hover::after {
+.desktop-nav a:hover::after {
   width: 100%;
 }
 
@@ -190,11 +195,10 @@ nav a:hover::after {
 
 .header-cta {
   display: inline-flex;
-
   align-items: center;
   justify-content: center;
 
-  margin-left: 10px;
+  margin-left: 8px;
 
   padding: 17px 25px;
 
@@ -214,9 +218,71 @@ nav a:hover::after {
 }
 
 .header-cta:hover {
-  background: var(--blue2);
+  background: var(--blue-light);
 
   transform: translateY(-2px);
+}
+
+/* =========================================================
+   MOBILE BUTTON
+========================================================= */
+
+.mobile-menu-button {
+  display: none;
+
+  width: 46px;
+  height: 46px;
+
+  padding: 10px;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  flex-direction: column;
+  justify-content: center;
+
+  gap: 5px;
+
+  flex-shrink: 0;
+
+  position: relative;
+  z-index: 1200;
+}
+
+.mobile-menu-button span {
+  display: block;
+
+  width: 26px;
+  height: 2px;
+
+  background: var(--dark-text);
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.mobile-menu-button.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-button.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-button.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================================
+   MOBILE MENU — HIDDEN BY DEFAULT
+========================================================= */
+
+.mobile-menu {
+  display: none !important;
 }
 
 /* =========================================================
@@ -274,10 +340,6 @@ nav a:hover::after {
   margin-bottom: 22px;
 }
 
-/* =========================================================
-   HERO TITLE
-========================================================= */
-
 .hero h1 {
   margin: 0;
 
@@ -305,11 +367,9 @@ nav a:hover::after {
 
 .hero h1 strong {
   color: #42b5f6;
-}
 
-/* =========================================================
-   HERO DESCRIPTION
-========================================================= */
+  font-weight: 900;
+}
 
 .hero-copy > p {
   max-width: 590px;
@@ -324,7 +384,7 @@ nav a:hover::after {
 }
 
 /* =========================================================
-   HERO BUTTONS
+   HERO ACTIONS
 ========================================================= */
 
 .hero-actions {
@@ -341,17 +401,15 @@ nav a:hover::after {
   align-items: center;
   justify-content: center;
 
-  background: var(--blue);
+  padding: 17px 25px;
 
+  background: var(--blue);
   color: #03101f;
 
+  font-size: 12px;
   font-weight: 900;
 
-  font-size: 12px;
-
   letter-spacing: 0.03em;
-
-  padding: 17px 25px;
 
   transition:
     background 0.2s ease,
@@ -359,7 +417,7 @@ nav a:hover::after {
 }
 
 .primary-btn:hover {
-  background: var(--blue2);
+  background: var(--blue-light);
 
   transform: translateY(-2px);
 }
@@ -370,15 +428,16 @@ nav a:hover::after {
   align-items: center;
   justify-content: center;
 
+  padding: 17px 25px;
+
   border: 1px solid rgba(255, 255, 255, 0.55);
 
   color: var(--white);
 
-  padding: 17px 25px;
-
   font-size: 12px;
-
   font-weight: 900;
+
+  letter-spacing: 0.03em;
 
   transition:
     border-color 0.2s ease,
@@ -390,6 +449,8 @@ nav a:hover::after {
   border-color: var(--blue);
 
   color: var(--blue);
+
+  background: rgba(46, 183, 244, 0.05);
 }
 
 /* =========================================================
@@ -406,31 +467,21 @@ nav a:hover::after {
   border-left: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* =========================================================
-   HERO IMAGE
-========================================================= */
-
 .hero-image {
   position: absolute;
 
   inset: 0;
 
-  background-image:
-    url("/hero-swimmer.png");
+  background-image: url("/hero-swimmer.png");
 
   background-size: cover;
 
-  background-position:
-    56% center;
+  background-position: 56% center;
 
   filter:
     saturate(1.05)
     contrast(1.05);
 }
-
-/* =========================================================
-   HERO IMAGE OVERLAY
-========================================================= */
 
 .hero-overlay {
   position: absolute;
@@ -449,7 +500,7 @@ nav a:hover::after {
 }
 
 /* =========================================================
-   VERTICAL DR SWIM TEXT
+   HERO VERTICAL WORD
 ========================================================= */
 
 .vertical-word {
@@ -460,7 +511,7 @@ nav a:hover::after {
 
   writing-mode: vertical-rl;
 
-  color: rgba(255, 255, 255, 0.20);
+  color: rgba(255, 255, 255, 0.16);
 
   font-size: 72px;
 
@@ -469,29 +520,21 @@ nav a:hover::after {
   letter-spacing: 0.02em;
 
   pointer-events: none;
+
+  user-select: none;
 }
 
-/* =========================================================
-   HERO INDEX
-========================================================= */
+/*
+   Hero image već sadrži "01 / MASTERS",
+   zato skrivamo dodatni HTML tekst.
+*/
 
 .hero-index {
-  position: absolute;
-
-  right: 9%;
-  bottom: 36px;
-
-  color: var(--blue);
-
-  font-size: 12px;
-
-  font-weight: 900;
-
-  letter-spacing: 0.25em;
+  display: none;
 }
 
 /* =========================================================
-   FEATURE STRIP
+   FEATURE IMAGE STRIP
 ========================================================= */
 
 .feature-strip {
@@ -499,6 +542,8 @@ nav a:hover::after {
 
   grid-template-columns:
     repeat(4, 1fr);
+
+  gap: 0;
 
   background: #061326;
 
@@ -509,77 +554,41 @@ nav a:hover::after {
     1px solid var(--line);
 }
 
-.feature {
-  min-height: 150px;
+.feature-image-only {
+  padding: 0;
 
-  padding: 25px 30px;
+  min-height: 0;
+
+  position: relative;
+
+  overflow: hidden;
 
   border-right:
     1px solid var(--line);
-
-  position: relative;
 }
 
-.feature:last-child {
+.feature-image-only:last-child {
   border-right: 0;
 }
 
-/* =========================================================
-   FEATURE NUMBER
-========================================================= */
+.feature-image-only img {
+  width: 100%;
 
-.feature-number {
-  color: var(--blue);
+  height: auto;
 
-  font-weight: 900;
+  display: block;
 
-  font-size: 12px;
+  object-fit: cover;
 
-  letter-spacing: 0.18em;
-
-  margin-bottom: 15px;
+  transition:
+    transform 0.5s ease,
+    filter 0.5s ease;
 }
 
-/* =========================================================
-   FEATURE ICON
-========================================================= */
+.feature-image-only:hover img {
+  transform: scale(1.03);
 
-.feature-icon {
-  color: var(--blue);
-
-  font-size: 30px;
-
-  float: left;
-
-  margin-right: 17px;
-
-  line-height: 1;
-}
-
-/* =========================================================
-   FEATURE TITLE
-========================================================= */
-
-.feature h2 {
-  margin: 4px 0 9px;
-
-  font-size: 16px;
-
-  letter-spacing: 0.01em;
-}
-
-/* =========================================================
-   FEATURE TEXT
-========================================================= */
-
-.feature p {
-  margin: 0;
-
-  color: var(--muted);
-
-  font-size: 12px;
-
-  line-height: 1.55;
+  filter: brightness(1.06);
 }
 
 /* =========================================================
@@ -598,10 +607,6 @@ nav a:hover::after {
 
   background: #07162a;
 }
-
-/* =========================================================
-   ABOUT TITLE
-========================================================= */
 
 .about h2 {
   margin: 0;
@@ -622,22 +627,18 @@ nav a:hover::after {
   color: var(--blue);
 }
 
-/* =========================================================
-   ABOUT TEXT
-========================================================= */
-
 .about > p {
   align-self: end;
 
-  color: #c2cfdd;
-
-  line-height: 1.8;
-
-  font-size: 17px;
+  margin: 0;
 
   max-width: 650px;
 
-  margin: 0;
+  color: #c2cfdd;
+
+  font-size: 17px;
+
+  line-height: 1.8;
 }
 
 /* =========================================================
@@ -657,10 +658,6 @@ nav a:hover::after {
   background: #041022;
 }
 
-/* =========================================================
-   BOTTOM CARDS
-========================================================= */
-
 .bottom-section > div {
   padding: 30px;
 
@@ -676,43 +673,62 @@ nav a:hover::after {
   border-color:
     rgba(46, 183, 244, 0.5);
 
-  transform: translateY(-3px);
+  transform: translateY(-4px);
 }
-
-/* =========================================================
-   BOTTOM NUMBER
-========================================================= */
 
 .bottom-section span {
   color: var(--blue);
 
-  font-weight: 900;
-
   font-size: 12px;
-}
 
-/* =========================================================
-   BOTTOM TITLE
-========================================================= */
+  font-weight: 900;
+}
 
 .bottom-section h3 {
-  font-size: 18px;
-
   margin: 16px 0 10px;
+
+  font-size: 18px;
 }
 
-/* =========================================================
-   BOTTOM TEXT
-========================================================= */
-
 .bottom-section p {
-  color: var(--muted);
+  margin: 0;
 
-  line-height: 1.6;
+  color: var(--muted);
 
   font-size: 14px;
 
+  line-height: 1.6;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+  min-height: 90px;
+
+  padding: 25px 8vw;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #030b16;
+
+  border-top:
+    1px solid var(--line);
+
+  text-align: center;
+}
+
+footer p {
   margin: 0;
+
+  color: #7f90a5;
+
+  font-size: 12px;
 }
 
 /* =========================================================
@@ -723,74 +739,82 @@ nav a:hover::after {
 
   .site-header {
     padding: 0 4vw;
+
+    gap: 20px;
   }
 
   .brand {
-    width: 210px;
+    width: 205px;
   }
 
   .brand img {
     width: 230px;
   }
 
-  nav {
-    gap: 22px;
+  .desktop-nav {
+    gap: 24px;
   }
 
-  nav a {
+  .desktop-nav a {
     font-size: 12px;
+  }
+
+  .header-cta {
+    padding: 15px 19px;
   }
 
   .hero {
     grid-template-columns:
-      45% 55%;
+      46% 54%;
   }
 
   .hero-copy {
-    padding-left: 5vw;
+    padding-left: 4vw;
   }
 
   .hero h1 {
-    font-size: clamp(
-      68px,
-      7vw,
-      105px
-    );
+    font-size:
+      clamp(
+        70px,
+        7vw,
+        105px
+      );
   }
 
   .vertical-word {
-    font-size: 60px;
-
     right: 25px;
+
+    font-size: 58px;
   }
 }
 
 /* =========================================================
-   TABLET / SMALL DESKTOP
+   TABLET / SMALL LAPTOP
 ========================================================= */
 
 @media (max-width: 950px) {
 
   .site-header {
-    padding: 14px 5vw;
-
     height: auto;
 
-    min-height: 90px;
+    min-height: 82px;
+
+    padding: 14px 5vw;
 
     flex-wrap: wrap;
   }
 
   .brand {
     width: 190px;
+
     height: 58px;
   }
 
   .brand img {
-    width: 210px;
+    width: 215px;
   }
 
-  nav {
+  .desktop-nav {
     order: 3;
 
     width: 100%;
@@ -801,11 +825,18 @@ nav a:hover::after {
 
     overflow-x: auto;
 
-    padding-bottom: 5px;
+    padding:
+      8px 0 4px;
+
+    scrollbar-width: none;
   }
 
-  nav a {
-    font-size: 11px;
+  .desktop-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .desktop-nav a {
+    white-space: nowrap;
 
     flex-shrink: 0;
   }
@@ -813,8 +844,6 @@ nav a:hover::after {
   .header-cta {
     margin-left: 0;
   }
-
-  /* HERO */
 
   .hero {
     grid-template-columns: 1fr;
@@ -824,9 +853,16 @@ nav a:hover::after {
 
   .hero-copy {
     padding:
-      65px
-      7vw
-      45px;
+      65px 7vw 45px;
+  }
+
+  .hero h1 {
+    font-size:
+      clamp(
+        72px,
+        12vw,
+        110px
+      );
   }
 
   .hero-visual {
@@ -842,8 +878,8 @@ nav a:hover::after {
     background:
       linear-gradient(
         180deg,
-        rgba(7, 22, 42, 0.15),
-        rgba(7, 22, 42, 0.05)
+        rgba(7, 22, 42, 0.12),
+        rgba(7, 22, 42, 0.08)
       );
   }
 
@@ -852,12 +888,12 @@ nav a:hover::after {
       repeat(2, 1fr);
   }
 
-  .feature:nth-child(2) {
+  .feature-image-only:nth-child(2) {
     border-right: 0;
   }
 
-  .feature:nth-child(3),
-  .feature:nth-child(4) {
+  .feature-image-only:nth-child(3),
+  .feature-image-only:nth-child(4) {
     border-top:
       1px solid var(--line);
   }
@@ -865,14 +901,10 @@ nav a:hover::after {
   .about {
     grid-template-columns: 1fr;
 
-    gap: 40px;
+    gap: 45px;
 
     padding:
       80px 7vw;
-  }
-
-  .about > p {
-    max-width: 800px;
   }
 
   .bottom-section {
@@ -881,6 +913,7 @@ nav a:hover::after {
     padding:
       60px 7vw;
   }
+
 }
 
 /* =========================================================
@@ -889,62 +922,163 @@ nav a:hover::after {
 
 @media (max-width: 600px) {
 
-  /* HEADER */
-
   .site-header {
-    padding:
-      10px 20px;
+    width: 100%;
+
+    height: 72px;
 
     min-height: 72px;
 
-    height: auto;
+    padding:
+      10px 18px;
 
-    justify-content:
-      space-between;
+    display: flex;
+
+    flex-wrap: nowrap;
+
+    align-items: center;
+
+    justify-content: space-between;
 
     gap: 10px;
 
-    flex-wrap: nowrap;
+    overflow: visible;
   }
 
   .brand {
     width: 165px;
+
     height: 52px;
 
-    background: #ffffff;
-
     overflow: hidden;
+
+    background: #ffffff;
   }
 
   .brand img {
     width: 190px;
 
+    max-width: none;
+
     left: 0;
+
     top: 50%;
 
     transform:
       translateY(-50%);
   }
 
-  .header-cta {
+  /* Hide desktop navigation */
+
+  .desktop-nav,
+  .desktop-cta {
     display: none;
   }
 
-  nav {
-    display: none;
+  /* Hamburger */
+
+  .mobile-menu-button {
+    display: flex;
   }
 
-  /* HERO */
+  /* Mobile dropdown */
+
+  .mobile-menu {
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    top: 72px;
+
+    display: flex !important;
+
+    flex-direction: column;
+
+    background: #ffffff;
+
+    padding:
+      10px 20px 22px;
+
+    border-top:
+      1px solid var(--dark-line);
+
+    box-shadow:
+      0 15px 35px rgba(0, 0, 0, 0.16);
+
+    opacity: 0;
+
+    transform:
+      translateY(-10px);
+
+    pointer-events: none;
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease;
+
+    z-index: 1100;
+  }
+
+  .mobile-menu.show {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+    pointer-events: auto;
+  }
+
+  .mobile-menu a {
+    color: var(--dark-text);
+
+    padding:
+      17px 5px;
+
+    border-bottom:
+      1px solid var(--dark-line);
+
+    font-size: 13px;
+
+    font-weight: 800;
+
+    letter-spacing:
+      0.04em;
+  }
+
+  .mobile-menu a:hover {
+    color: var(--blue);
+  }
+
+  .mobile-menu-cta {
+    margin-top: 14px;
+
+    padding:
+      16px !important;
+
+    text-align: center;
+
+    background: var(--blue);
+
+    color: #03101f !important;
+
+    border: 0 !important;
+  }
+
+  /* =====================================================
+     MOBILE HERO
+  ===================================================== */
 
   .hero {
     display: block;
+
+    min-height: auto;
   }
 
   .hero-copy {
     padding:
-      55px
-      25px
-      45px;
+      55px 25px 40px;
   }
 
   .eyebrow {
@@ -966,13 +1100,12 @@ nav a:hover::after {
   }
 
   .hero-copy > p {
+    margin:
+      25px 0 28px;
+
     font-size: 14px;
 
     line-height: 1.6;
-
-    margin:
-      25px 0
-      28px;
   }
 
   .hero-actions {
@@ -995,56 +1128,48 @@ nav a:hover::after {
   }
 
   .hero-image {
+    background-size: cover;
+
     background-position:
       center center;
-
-    background-size: cover;
   }
 
   .vertical-word {
+    right: 16px;
+
+    top: 70px;
+
     font-size: 42px;
-
-    right: 15px;
-
-    top: 80px;
   }
 
-  .hero-index {
-    right: 25px;
-
-    bottom: 22px;
-
-    font-size: 9px;
-  }
-
-  /* FEATURES */
+  /* =====================================================
+     MOBILE FEATURES
+  ===================================================== */
 
   .feature-strip {
     grid-template-columns: 1fr;
   }
 
-  .feature {
-    min-height: 135px;
-
-    padding: 24px 25px;
-
+  .feature-image-only {
     border-right: 0;
 
     border-bottom:
       1px solid var(--line);
   }
 
-  .feature:nth-child(2),
-  .feature:nth-child(3),
-  .feature:nth-child(4) {
+  .feature-image-only:nth-child(2),
+  .feature-image-only:nth-child(3),
+  .feature-image-only:nth-child(4) {
     border-top: 0;
   }
 
-  .feature:last-child {
+  .feature-image-only:last-child {
     border-bottom: 0;
   }
 
-  /* ABOUT */
+  /* =====================================================
+     MOBILE ABOUT
+  ===================================================== */
 
   .about {
     padding:
@@ -1063,26 +1188,49 @@ nav a:hover::after {
     line-height: 1.7;
   }
 
-  /* BOTTOM */
+  /* =====================================================
+     MOBILE BOTTOM
+  ===================================================== */
 
   .bottom-section {
     padding:
       50px 25px;
+
+    gap: 14px;
   }
 
   .bottom-section > div {
     padding: 25px;
   }
+
+  /* =====================================================
+     MOBILE FOOTER
+  ===================================================== */
+
+  footer {
+    min-height: 75px;
+
+    padding:
+      22px 20px;
+  }
+
+  footer p {
+    font-size: 11px;
+
+    line-height: 1.5;
+  }
 }
 
 /* =========================================================
-   VERY SMALL MOBILE
+   VERY SMALL PHONES
 ========================================================= */
 
 @media (max-width: 380px) {
 
   .brand {
     width: 145px;
+
+    height: 50px;
   }
 
   .brand img {
@@ -1095,11 +1243,16 @@ nav a:hover::after {
 
   .hero-copy {
     padding-left: 20px;
+
     padding-right: 20px;
   }
 
   .hero-visual {
     min-height: 330px;
+  }
+
+  .about h2 {
+    font-size: 40px;
   }
 }
 
@@ -1116,7 +1269,8 @@ nav a:hover::after {
   *,
   *::before,
   *::after {
-    transition: none !important;
     animation: none !important;
+
+    transition: none !important;
   }
 }

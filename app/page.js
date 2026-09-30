@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+
 const features = [
   {
     number: "01",
@@ -30,6 +34,12 @@ const features = [
 ];
 
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <main>
 
@@ -43,6 +53,7 @@ export default function Home() {
           className="brand"
           href="#top"
           aria-label="DR SWIM Vladimir Antonijević"
+          onClick={closeMenu}
         >
           <img
             src="/drswim-logo.png"
@@ -50,7 +61,10 @@ export default function Home() {
           />
         </a>
 
-        <nav>
+
+        {/* DESKTOP NAVIGATION */}
+
+        <nav className="desktop-nav">
           <a href="#klub">O KLUBU</a>
           <a href="#trening">TRENING</a>
           <a href="#takmicenja">TAKMIČENJA</a>
@@ -58,12 +72,90 @@ export default function Home() {
           <a href="#kontakt">KONTAKT</a>
         </nav>
 
+
+        {/* DESKTOP CTA */}
+
         <a
-          className="header-cta"
+          className="header-cta desktop-cta"
           href="#kontakt"
         >
           PRIDRUŽI SE →
         </a>
+
+
+        {/* MOBILE HAMBURGER */}
+
+        <button
+          className={`mobile-menu-button ${
+            menuOpen ? "open" : ""
+          }`}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={
+            menuOpen
+              ? "Zatvori meni"
+              : "Otvori meni"
+          }
+          aria-expanded={menuOpen}
+          type="button"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+
+        {/* MOBILE MENU */}
+
+        <div
+          className={`mobile-menu ${
+            menuOpen ? "show" : ""
+          }`}
+        >
+
+          <a
+            href="#klub"
+            onClick={closeMenu}
+          >
+            O KLUBU
+          </a>
+
+          <a
+            href="#trening"
+            onClick={closeMenu}
+          >
+            TRENING
+          </a>
+
+          <a
+            href="#takmicenja"
+            onClick={closeMenu}
+          >
+            TAKMIČENJA
+          </a>
+
+          <a
+            href="#plivaci"
+            onClick={closeMenu}
+          >
+            PLIVAČI
+          </a>
+
+          <a
+            href="#kontakt"
+            onClick={closeMenu}
+          >
+            KONTAKT
+          </a>
+
+          <a
+            className="mobile-menu-cta"
+            href="#kontakt"
+            onClick={closeMenu}
+          >
+            PRIDRUŽI SE →
+          </a>
+
+        </div>
 
       </header>
 
@@ -83,16 +175,19 @@ export default function Home() {
             DR SWIM / MASTERS SWIMMING
           </div>
 
+
           <h1>
             <span>SWIM.</span>
             <strong>TRAIN.</strong>
             <span>RACE.</span>
           </h1>
 
+
           <p>
             Ozbiljan trening. Dobra ekipa. Ista ljubav prema vodi.
             Masters plivanje za one koji žele više od običnog treninga.
           </p>
+
 
           <div className="hero-actions">
 
@@ -115,11 +210,13 @@ export default function Home() {
         </div>
 
 
+        {/* HERO IMAGE */}
+
         <div className="hero-visual">
 
-          <div className="hero-image" />
+          <div className="hero-image"></div>
 
-          <div className="hero-overlay" />
+          <div className="hero-overlay"></div>
 
           <div className="vertical-word">
             DR SWIM
