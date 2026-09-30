@@ -39,7 +39,9 @@ export default function AboutPage() {
             O NAMA
           </a>
 
-          <a href="/#trening">TRENING</a>
+          <a href="/#trening">
+            TRENING
+          </a>
 
           <a href="/#takmicenja">
             TAKMIČENJA
@@ -84,7 +86,10 @@ export default function AboutPage() {
             menuOpen ? "show" : ""
           }`}
         >
-          <a href="/" onClick={closeMenu}>
+          <a
+            href="/"
+            onClick={closeMenu}
+          >
             POČETNA
           </a>
 
@@ -298,156 +303,32 @@ export default function AboutPage() {
 
         <div className="about-values-grid">
 
-          {/* 01 TEHNIKA */}
-
           <article className="about-value-card">
-
-            <div className="about-value-image">
-
-              <img
-                src="/technique.jpg"
-                alt="DR SWIM tehnika"
-              />
-
-            </div>
-
-            <div className="about-value-content">
-
-              <div className="about-value-number">
-                01
-              </div>
-
-              <div className="about-value-line"></div>
-
-              <h3>
-                TEHNIKA
-              </h3>
-
-              <p>
-                Rad na tehnici, efikasnosti i osećaju za vodu.
-              </p>
-
-              <a href="/#trening">
-                →
-              </a>
-
-            </div>
-
+            <img
+              src="/technique.jpg"
+              alt="DR SWIM Tehnika"
+            />
           </article>
 
-
-          {/* 02 KONTINUITET */}
-
           <article className="about-value-card">
-
-            <div className="about-value-image">
-
-              <img
-                src="/endurance.jpg"
-                alt="DR SWIM kontinuitet"
-              />
-
-            </div>
-
-            <div className="about-value-content">
-
-              <div className="about-value-number">
-                02
-              </div>
-
-              <div className="about-value-line"></div>
-
-              <h3>
-                KONTINUITET
-              </h3>
-
-              <p>
-                Dosledan trening, kontinuitet i postepen napredak.
-              </p>
-
-              <a href="/#trening">
-                →
-              </a>
-
-            </div>
-
+            <img
+              src="/endurance.jpg"
+              alt="DR SWIM Izdržljivost"
+            />
           </article>
 
-
-          {/* 03 TAKMIČENJE */}
-
           <article className="about-value-card">
-
-            <div className="about-value-image">
-
-              <img
-                src="/speed.jpg"
-                alt="DR SWIM takmičenje"
-              />
-
-            </div>
-
-            <div className="about-value-content">
-
-              <div className="about-value-number">
-                03
-              </div>
-
-              <div className="about-value-line"></div>
-
-              <h3>
-                TAKMIČENJE
-              </h3>
-
-              <p>
-                Masters mitinzi, prvenstva i open water izazovi.
-              </p>
-
-              <a href="/#takmicenja">
-                →
-              </a>
-
-            </div>
-
+            <img
+              src="/speed.jpg"
+              alt="DR SWIM Brzina"
+            />
           </article>
 
-
-          {/* 04 ZAJEDNICA */}
-
           <article className="about-value-card">
-
-            <div className="about-value-image">
-
-              <img
-                src="/community.jpg"
-                alt="DR SWIM zajednica"
-              />
-
-            </div>
-
-            <div className="about-value-content">
-
-              <div className="about-value-number">
-                04
-              </div>
-
-              <div className="about-value-line"></div>
-
-              <h3>
-                ZAJEDNICA
-              </h3>
-
-              <p>
-                Ekipa koja postoji i trenira zajedno,
-                i van bazena.
-              </p>
-
-              <a href="/#kontakt">
-                →
-              </a>
-
-            </div>
-
+            <img
+              src="/community.jpg"
+              alt="DR SWIM Zajednica"
+            />
           </article>
 
         </div>
@@ -478,7 +359,6 @@ export default function AboutPage() {
 
           </div>
 
-
           <div className="about-final-action">
 
             <p>
@@ -506,11 +386,9 @@ export default function AboutPage() {
       ===================================================== */}
 
       <footer>
-
         <p>
           © 2026 DR SWIM Masters · Vladimir Antonijević
         </p>
-
       </footer>
 
     </main>
