@@ -137,7 +137,7 @@ img {
 }
 
 /* =========================================================
-   DESKTOP NAV
+   DESKTOP NAVIGATION
 ========================================================= */
 
 .desktop-nav {
@@ -224,7 +224,7 @@ img {
 }
 
 /* =========================================================
-   MOBILE BUTTON
+   MOBILE HAMBURGER
 ========================================================= */
 
 .mobile-menu-button {
@@ -278,7 +278,8 @@ img {
 }
 
 /* =========================================================
-   MOBILE MENU — HIDDEN BY DEFAULT
+   MOBILE MENU
+   HIDDEN ON DESKTOP
 ========================================================= */
 
 .mobile-menu {
@@ -500,7 +501,7 @@ img {
 }
 
 /* =========================================================
-   HERO VERTICAL WORD
+   VERTICAL DR SWIM
 ========================================================= */
 
 .vertical-word {
@@ -525,8 +526,8 @@ img {
 }
 
 /*
-   Hero image već sadrži "01 / MASTERS",
-   zato skrivamo dodatni HTML tekst.
+   Hero slika već sadrži 01 / MASTERS.
+   Zato dodatni HTML tekst sakrivamo.
 */
 
 .hero-index {
@@ -913,7 +914,6 @@ footer p {
     padding:
       60px 7vw;
   }
-
 }
 
 /* =========================================================
@@ -921,6 +921,8 @@ footer p {
 ========================================================= */
 
 @media (max-width: 600px) {
+
+  /* HEADER */
 
   .site-header {
     width: 100%;
@@ -950,9 +952,9 @@ footer p {
 
     height: 52px;
 
-    overflow: hidden;
-
     background: #ffffff;
+
+    overflow: hidden;
   }
 
   .brand img {
@@ -968,7 +970,7 @@ footer p {
       translateY(-50%);
   }
 
-  /* Hide desktop navigation */
+  /* Hide desktop menu */
 
   .desktop-nav,
   .desktop-cta {
@@ -1066,9 +1068,7 @@ footer p {
     border: 0 !important;
   }
 
-  /* =====================================================
-     MOBILE HERO
-  ===================================================== */
+  /* HERO */
 
   .hero {
     display: block;
@@ -1143,11 +1143,20 @@ footer p {
   }
 
   /* =====================================================
-     MOBILE FEATURES
+     MOBILE FEATURE CARDS
   ===================================================== */
 
   .feature-strip {
     grid-template-columns: 1fr;
+  }
+
+  /*
+     Prva slika je veoma slična hero fotografiji,
+     zato je na telefonu skrivamo.
+  */
+
+  .feature-image-only:first-child {
+    display: none;
   }
 
   .feature-image-only {
@@ -1168,7 +1177,7 @@ footer p {
   }
 
   /* =====================================================
-     MOBILE ABOUT
+     ABOUT
   ===================================================== */
 
   .about {
@@ -1189,7 +1198,7 @@ footer p {
   }
 
   /* =====================================================
-     MOBILE BOTTOM
+     BOTTOM SECTION
   ===================================================== */
 
   .bottom-section {
@@ -1204,7 +1213,7 @@ footer p {
   }
 
   /* =====================================================
-     MOBILE FOOTER
+     FOOTER
   ===================================================== */
 
   footer {
