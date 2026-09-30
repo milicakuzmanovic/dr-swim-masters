@@ -922,9 +922,7 @@ footer p {
 
 @media (max-width: 600px) {
 
-  /* =====================================================
-     HEADER
-  ===================================================== */
+  /* HEADER */
 
   .site-header {
     width: 100%;
@@ -1070,9 +1068,7 @@ footer p {
     border: 0 !important;
   }
 
-  /* =====================================================
-     HERO
-  ===================================================== */
+  /* HERO */
 
   .hero {
     display: block;
@@ -1154,15 +1150,23 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  /*
-     SVE 4 SLIKE OSTAJU I NA MOBILNOM.
-  */
-
   .feature-image-only {
     border-right: 0;
 
     border-bottom:
       1px solid var(--line);
+
+    height: auto;
+  }
+
+  .feature-image-only img {
+    width: 100%;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
   }
 
   .feature-image-only:nth-child(2),
