@@ -42,13 +42,11 @@ export default function Home() {
 
   return (
     <main>
-
       {/* =====================================================
           HEADER
       ===================================================== */}
 
       <header className="site-header">
-
         <a
           className="brand"
           href="#top"
@@ -61,19 +59,13 @@ export default function Home() {
           />
         </a>
 
-
-        {/* DESKTOP NAVIGATION */}
-
         <nav className="desktop-nav">
-          <a href="#klub">O KLUBU</a>
+          <a href="/o-nama">O NAMA</a>
           <a href="#trening">TRENING</a>
           <a href="#takmicenja">TAKMIČENJA</a>
           <a href="#plivaci">PLIVAČI</a>
           <a href="#kontakt">KONTAKT</a>
         </nav>
-
-
-        {/* DESKTOP CTA */}
 
         <a
           className="header-cta desktop-cta"
@@ -81,9 +73,6 @@ export default function Home() {
         >
           PRIDRUŽI SE →
         </a>
-
-
-        {/* MOBILE HAMBURGER */}
 
         <button
           className={`mobile-menu-button ${
@@ -103,20 +92,16 @@ export default function Home() {
           <span></span>
         </button>
 
-
-        {/* MOBILE MENU */}
-
         <div
           className={`mobile-menu ${
             menuOpen ? "show" : ""
           }`}
         >
-
           <a
-            href="#klub"
+            href="/o-nama"
             onClick={closeMenu}
           >
-            O KLUBU
+            O NAMA
           </a>
 
           <a
@@ -154,27 +139,18 @@ export default function Home() {
           >
             PRIDRUŽI SE →
           </a>
-
         </div>
-
       </header>
-
 
       {/* =====================================================
           HERO
       ===================================================== */}
 
-      <section
-        className="hero"
-        id="top"
-      >
-
+      <section className="hero" id="top">
         <div className="hero-copy">
-
           <div className="eyebrow">
             DR SWIM / MASTERS SWIMMING
           </div>
-
 
           <h1>
             <span>SWIM.</span>
@@ -182,15 +158,12 @@ export default function Home() {
             <span>RACE.</span>
           </h1>
 
-
           <p>
             Ozbiljan trening. Dobra ekipa. Ista ljubav prema vodi.
             Masters plivanje za one koji žele više od običnog treninga.
           </p>
 
-
           <div className="hero-actions">
-
             <a
               className="primary-btn"
               href="#kontakt"
@@ -204,16 +177,10 @@ export default function Home() {
             >
               POGLEDAJ TRENINGE
             </a>
-
           </div>
-
         </div>
 
-
-        {/* HERO IMAGE */}
-
         <div className="hero-visual">
-
           <div className="hero-image"></div>
 
           <div className="hero-overlay"></div>
@@ -225,49 +192,39 @@ export default function Home() {
           <div className="hero-index">
             01 / MASTERS
           </div>
-
         </div>
-
       </section>
 
-
       {/* =====================================================
-          FEATURE IMAGE STRIP
+          TRAINING FEATURES
       ===================================================== */}
 
       <section
         className="feature-strip"
         id="trening"
       >
-
         {features.map((feature) => (
           <article
             className="feature feature-image-only"
             key={feature.number}
           >
-
             <img
               src={feature.image}
               alt={`DR SWIM ${feature.title.toLowerCase()}`}
             />
-
           </article>
         ))}
-
       </section>
 
-
       {/* =====================================================
-          ABOUT DR SWIM
+          ABOUT
       ===================================================== */}
 
       <section
         className="about"
         id="klub"
       >
-
         <div>
-
           <div className="eyebrow">
             ABOUT DR SWIM
           </div>
@@ -275,14 +232,9 @@ export default function Home() {
           <h2>
             Više od treninga.
             <br />
-
-            <span>
-              Zajednica u vodi.
-            </span>
+            <span>Zajednica u vodi.</span>
           </h2>
-
         </div>
-
 
         <p>
           DR SWIM Masters okuplja odrasle plivače različitog
@@ -290,24 +242,18 @@ export default function Home() {
           Fokus je na kvalitetnom treningu, tehnici, napretku
           i uživanju u plivanju.
         </p>
-
       </section>
 
-
       {/* =====================================================
-          TAKMIČENJA
+          BOTTOM INFORMATION
       ===================================================== */}
 
       <section
         className="bottom-section"
         id="takmicenja"
       >
-
         <div>
-
-          <span>
-            01
-          </span>
+          <span>01</span>
 
           <h3>
             MASTERS TAKMIČENJA
@@ -317,15 +263,10 @@ export default function Home() {
             Priprema za domaća i međunarodna masters
             takmičenja, mitinge i open water izazove.
           </p>
-
         </div>
 
-
         <div id="plivaci">
-
-          <span>
-            02
-          </span>
+          <span>02</span>
 
           <h3>
             ZA SVE NIVOE
@@ -335,15 +276,10 @@ export default function Home() {
             Trening prilagođen iskustvu, cilju i ritmu
             svakog plivača.
           </p>
-
         </div>
 
-
         <div id="kontakt">
-
-          <span>
-            03
-          </span>
+          <span>03</span>
 
           <h3>
             PRIDRUŽI NAM SE
@@ -353,24 +289,18 @@ export default function Home() {
             Javi nam se i napravi prvi korak ka svom
             sledećem plivačkom cilju.
           </p>
-
         </div>
-
       </section>
-
 
       {/* =====================================================
           FOOTER
       ===================================================== */}
 
       <footer>
-
         <p>
           © 2026 DR SWIM Masters · Vladimir Antonijević
         </p>
-
       </footer>
-
     </main>
   );
 }
