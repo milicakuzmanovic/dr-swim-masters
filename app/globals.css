@@ -922,7 +922,9 @@ footer p {
 
 @media (max-width: 600px) {
 
-  /* HEADER */
+  /* =====================================================
+     HEADER
+  ===================================================== */
 
   .site-header {
     width: 100%;
@@ -1068,7 +1070,9 @@ footer p {
     border: 0 !important;
   }
 
-  /* HERO */
+  /* =====================================================
+     HERO
+  ===================================================== */
 
   .hero {
     display: block;
@@ -1151,13 +1155,8 @@ footer p {
   }
 
   /*
-     Prva slika je veoma slična hero fotografiji,
-     zato je na telefonu skrivamo.
+     SVE 4 SLIKE OSTAJU I NA MOBILNOM.
   */
-
-  .feature-image-only:first-child {
-    display: none;
-  }
 
   .feature-image-only {
     border-right: 0;
